@@ -18,7 +18,7 @@ describe("Teste de cadastro de usuário", () => {
     };
 
 
-    cy.request({
+    cy.api({
       method: "POST",
       url: userUrl,
       body: userData
@@ -41,7 +41,7 @@ describe("Teste de edição de usuários", () => {
       password: randomPassword,
       administrador: "true"
     };
-    cy.request({
+    cy.api({
       method: "PUT",
       url: `${userUrl}/${userID}`,
       body: userData

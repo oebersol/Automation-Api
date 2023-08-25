@@ -15,7 +15,7 @@ describe("Teste de cadastro de usuário", () => {
       administrador: "true"
     };
 
-    cy.request({
+    cy.api({
       method: "POST",
       url: userUrl,
       body: userData
@@ -32,7 +32,7 @@ describe("Teste de cadastro de usuário", () => {
 
 describe("Teste de busca de usuários", () => {
   it("Buscando usuários", () => {
-    cy.request({
+    cy.api({
       method: "GET",
       url: userUrl,
     }).as("response");

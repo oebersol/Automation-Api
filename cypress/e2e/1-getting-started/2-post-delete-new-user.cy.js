@@ -18,7 +18,7 @@ describe("Teste de cadastro de usuário", () => {
     };
 
 
-    cy.request({
+    cy.api({
       method: "POST",
       url: userUrl,
       body: userData
@@ -37,7 +37,7 @@ describe("Teste de cadastro de usuário", () => {
 
 describe("Teste de remoção de usuário", () => {
   it("Removendo usuário", () => {
-    cy.request({
+    cy.api({
       method: "DELETE",
       url: `${userUrl}/${userID}`,
       body: {
