@@ -18,32 +18,30 @@ describe("Teste de cadastro de usuário", () => {
     };
 
 
-    cy.api({
-      method: "POST",
-      url: '/usuarios',
-      body: userData
-    }).then((response) => {
-      expect(response.status).to.eq(201);
-      expect(response.body.message).to.eq("Cadastro realizado com sucesso");
-      expect(response.body).to.have.property("_id");
+    cy.cadastroUsuario(userData)
 
-      userID = response.body._id;
+      .then((response) => {
+        expect(response.status).to.eq(201);
+        expect(response.body.message).to.eq("Cadastro realizado com sucesso");
+        expect(response.body).to.have.property("_id");
 
-    });
+        userID = response.body._id;
+
+      });
   });
 });
 
 
-  describe("Teste de busca de usuários por ID", () => {
-    it("Buscando usuários", () => {
-      cy.api({
-        method: "GET",
-        url: `/usuarios/${userID}`,
-      }).then((response) => {
-        expect(response.status).to.eq(200);
-        expect(response.body._id).to.eq(userID);
-      });
+describe("Teste de busca de usuários por ID", () => {
+  it("Buscando usuários", () => {
+    cy.api({
+      method: "GET",
+      url: `/usuarios/${userID}`,
+    }).then((response) => {
+      expect(response.status).to.eq(200);
+      expect(response.body._id).to.eq(userID);
     });
   });
-  
+});
+
 
