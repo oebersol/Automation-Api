@@ -20,7 +20,7 @@ describe("Teste de cadastro de usuário", () => {
 
     cy.api({
       method: "POST",
-      url: userUrl,
+      url: '/usuarios',
       body: userData
     }).then((response) => {
       expect(response.status).to.eq(201);
@@ -43,7 +43,7 @@ describe("Teste de edição de usuários", () => {
     };
     cy.api({
       method: "PUT",
-      url: `${userUrl}/${userID}`,
+      url: `/usuarios/${userID}`,
       body: userData
     }).then((response) => {
       expect(response.status).to.eq(200);

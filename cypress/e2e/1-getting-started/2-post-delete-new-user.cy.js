@@ -5,7 +5,7 @@ var randomPassword = faker.internet.password();
 
 
 const userUrl = 'https://serverest.dev/usuarios';
-let userID; 
+let userID;
 
 
 describe("Teste de cadastro de usuário", () => {
@@ -20,7 +20,7 @@ describe("Teste de cadastro de usuário", () => {
 
     cy.api({
       method: "POST",
-      url: userUrl,
+      url: '/usuarios',
       body: userData
     }).then((response) => {
       expect(response.status).to.eq(201);
@@ -30,7 +30,7 @@ describe("Teste de cadastro de usuário", () => {
       userID = response.body._id;
 
     });
-    cy.log(userData.password); 
+    cy.log(userData.password);
 
   });
 });
@@ -39,13 +39,13 @@ describe("Teste de remoção de usuário", () => {
   it("Removendo usuário", () => {
     cy.api({
       method: "DELETE",
-      url: `${userUrl}/${userID}`,
+      url: `/usuarios/${userID}`,
       body: {
       }
     }).then((response) => {
       expect(response.status).to.eq(200);
       expect(response.body.message).to.eq("Registro excluído com sucesso");
     });
-  
+
   });
 });

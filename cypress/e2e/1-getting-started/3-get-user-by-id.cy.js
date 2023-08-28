@@ -20,7 +20,7 @@ describe("Teste de cadastro de usuário", () => {
 
     cy.api({
       method: "POST",
-      url: userUrl,
+      url: '/usuarios',
       body: userData
     }).then((response) => {
       expect(response.status).to.eq(201);
@@ -33,20 +33,17 @@ describe("Teste de cadastro de usuário", () => {
   });
 });
 
-describe("Teste de busca de usuários por ID", () => {
-  it("Buscando usuários", () => {
-    cy.api({
-      method: "GET",
-      url: `${userUrl}/${userID}`,
-    }).as("response");
-  
-    cy.get("@response").should((response) => {
-      expect(response.status).to.eq(200);
-      expect(response.body._id).to.eq(userID);
-    });
 
+  describe("Teste de busca de usuários por ID", () => {
+    it("Buscando usuários", () => {
+      cy.api({
+        method: "GET",
+        url: `/usuarios/${userID}`,
+      }).then((response) => {
+        expect(response.status).to.eq(200);
+        expect(response.body._id).to.eq(userID);
+      });
+    });
   });
-  });
-  
   
 
