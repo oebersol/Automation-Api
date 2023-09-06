@@ -3,10 +3,7 @@ var randomName = faker.person.fullName();
 var randomEmail = faker.internet.email();
 var randomPassword = faker.internet.password();
 
-
-const userUrl = 'https://serverest.dev/usuarios';
 let userID;
-
 
 describe("Teste de cadastro de usuário", () => {
   it("Cadastrando usuário", () => {
@@ -16,7 +13,6 @@ describe("Teste de cadastro de usuário", () => {
       password: randomPassword,
       administrador: "true"
     };
-
 
     cy.cadastroUsuario(userData)
 

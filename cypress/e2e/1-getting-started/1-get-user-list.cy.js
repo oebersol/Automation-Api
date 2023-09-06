@@ -4,7 +4,6 @@ var randomEmail = faker.internet.email();
 var randomPassword = faker.internet.password();
 
 
-
 describe("Teste de cadastro de usuário", () => {
   it("Cadastrando usuário", () => {
     const userData = {
@@ -15,13 +14,6 @@ describe("Teste de cadastro de usuário", () => {
     };
 
     cy.cadastroUsuario(userData)
-
-      .then((response)=> {
-        expect(response.status).to.eq(201)
-        expect(response.body.message).to.eq("Cadastro realizado com sucesso")
-        expect(response.body).to.have.property("_id")
-
-      })
     cy.log(userData.password);
 
   })

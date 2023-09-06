@@ -4,7 +4,6 @@ var randomEmail = faker.internet.email();
 var randomPassword = faker.internet.password();
 
 
-const userUrl = 'https://serverest.dev/usuarios';
 let userID;
 
 
